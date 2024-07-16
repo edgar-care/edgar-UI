@@ -5,7 +5,7 @@ A component library for Flutter applications. This library is a collection of wi
 The main usage of this library is to be used in the edgar apps project.
 
 ## Features
-edgar UI has a number of features that make it easier to build Flutter applications:
+edgar has a number of features that make it easier to build Flutter applications:
 - A collection of custom buttons
 - A collection of custom date picker
 - A collection of custom modals
@@ -15,7 +15,7 @@ edgar UI has a number of features that make it easier to build Flutter applicati
 - A collection of custom colors
 
 ## Usage
-To use the edgar UI library in your Flutter application, add the following dependency to your `pubspec.yaml` file with Flutter:
+To use the edgar library in your Flutter application, add the following dependency to your `pubspec.yaml` file with Flutter:
 
 ```bash
  $ flutter pub add edgar
