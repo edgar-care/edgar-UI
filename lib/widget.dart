@@ -16,3 +16,4 @@ export 'src/field_custom.dart'
         CustomFieldSearchMaxLines;
 export 'src/pagination.dart' show Pagination;
 export 'src/snackbar.dart' show ErrorSnackBar, InfoSnackBar, SuccessSnackBar;
+export 'src/text.dart' show CustomText, TxtStyles;
