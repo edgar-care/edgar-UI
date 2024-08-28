@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../colors.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 /// Size and font weight of the widget text
 enum TxtStyles {
@@ -76,67 +75,67 @@ class CustomText extends StatelessWidget {
 
     switch (txtStyles) {
       case TxtStyles.boldSm:
-        fontweight = FontWeight.w600;
+        fontweight = FontWeight.w700;
         fontSize = 12;
         break;
       case TxtStyles.boldMd:
-        fontweight = FontWeight.w600;
+        fontweight = FontWeight.w700;
         fontSize = 14;
         break;
       case TxtStyles.boldLg:
-        fontweight = FontWeight.w600;
+        fontweight = FontWeight.w700;
         fontSize = 16;
         break;
       case TxtStyles.boldXl:
-        fontweight = FontWeight.w600;
+        fontweight = FontWeight.w700;
         fontSize = 20;
         break;
       case TxtStyles.bold2Xl:
-        fontweight = FontWeight.w600;
+        fontweight = FontWeight.w700;
         fontSize = 24;
         break;
       case TxtStyles.md:
-        fontweight = FontWeight.normal;
+        fontweight = FontWeight.w600;
         fontSize = 14;
         break;
       case TxtStyles.lg:
-        fontweight = FontWeight.normal;
+        fontweight = FontWeight.w600;
         fontSize = 16;
         break;
       case TxtStyles.xl:
-        fontweight = FontWeight.normal;
+        fontweight = FontWeight.w600;
         fontSize = 20;
         break;
       case TxtStyles.xxl:
-        fontweight = FontWeight.normal;
+        fontweight = FontWeight.w600;
         fontSize = 24;
         break;
       case TxtStyles.xxxl:
-        fontweight = FontWeight.bold;
+        fontweight = FontWeight.w700;
         fontSize = 32;
         break;
       case TxtStyles.xxxxl:
-        fontweight = FontWeight.bold;
+        fontweight = FontWeight.w700;
         fontSize = 36;
         break;
       case TxtStyles.xxxxxl:
-        fontweight = FontWeight.bold;
+        fontweight = FontWeight.w700;
         fontSize = 42;
         break;
       case TxtStyles.xxxxxxl:
-        fontweight = FontWeight.bold;
+        fontweight = FontWeight.w700;
         fontSize = 48;
         break;
       case TxtStyles.xxxxxxxl:
-        fontweight = FontWeight.bold;
+        fontweight = FontWeight.w700;
         fontSize = 64;
         break;
       case TxtStyles.xxxxxxxxl:
-        fontweight = FontWeight.bold;
+        fontweight = FontWeight.w700;
         fontSize = 72;
         break;
       default:
-        fontweight = FontWeight.normal;
+        fontweight = FontWeight.w600;
         fontSize = 12;
         break;
     }
