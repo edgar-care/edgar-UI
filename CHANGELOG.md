@@ -1,4 +1,4 @@
-## 0.1.0
+## 0.2.0
 
 - Add custom buttons
 - Add custom text fields
