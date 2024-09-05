@@ -13,6 +13,7 @@ edgar has a number of features that make it easier to build Flutter applications
 - A pagination widget
 - A snackbar widget
 - A collection of custom colors
+- A collection of custom texts
 
 ## Usage
 To use the edgar library in your Flutter application, add the following dependency to your `pubspec.yaml` file with Flutter:
@@ -24,7 +25,7 @@ To use the edgar library in your Flutter application, add the following dependen
 This will add a line like this to your package's pubspec.yaml (and run an implicit flutter pub get):
 ```yaml
 dependencies:
-  edgar: ^0.1.0
+  edgar: ^0.2.0
 ```
 Alternatively, your editor might support `flutter pub get`. Check the docs for your editor to learn more.
 
