@@ -1,5 +1,9 @@
 ## 0.2.0
 
+- Add custom texts
+
+## 0.1.0
+
 - Add custom buttons
 - Add custom text fields
 - Add custom date picker
