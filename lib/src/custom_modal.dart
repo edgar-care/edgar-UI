@@ -171,17 +171,16 @@ class ModalContainer extends StatelessWidget {
                 physics:
                     const BouncingScrollPhysics(), // Optional: Add bounce effect
                 child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxHeight: MediaQuery.of(context).size.height -
-                          264, // Adjust as per your needs
-                    ),
-                    child: Flexible(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: body!,
-                      ),
-                    )),
+                  constraints: BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height -
+                        264, // Adjust as needed
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: body!,
+                  ),
+                ),
               ),
             ],
             const SizedBox(height: 24),
