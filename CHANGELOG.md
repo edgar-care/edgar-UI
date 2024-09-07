@@ -1,6 +1,6 @@
 ## 0.2.1
 
-_ Fix modal gray square in the body
+- Fix modal gray square in the body
 
 # 0.2.0
 
