@@ -1,4 +1,8 @@
-## 0.2.0
+## 0.2.1
+
+- Fix modal gray square in the body
+
+# 0.2.0
 
 - Add custom texts
 
