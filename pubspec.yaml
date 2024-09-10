@@ -1,6 +1,6 @@
 name: edgar
 description: "Flutter plugin providing library components used in the edgar apps"
-version: 0.2.1
+version: 0.2.2
 homepage: "https://edgar-sante.fr"
 repository: "https://github.com/edgar-care/edgar-UI"
 
