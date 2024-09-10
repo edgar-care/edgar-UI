@@ -27,6 +27,9 @@ class CustomField extends StatefulWidget {
   /// Define the action to do on submit
   final TextInputAction action;
 
+  /// Bool to define for the text field if it's not capitalize
+  final bool? isNotCapitalize;
+
   /// Take in required parameter a Label, a  fonction onchange, action.
   const CustomField({
     super.key,
@@ -36,6 +39,7 @@ class CustomField extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     required this.onChanged,
     this.value = '',
+    this.isNotCapitalize = false,
     this.maxSize,
     required this.action,
   });
@@ -69,7 +73,12 @@ class _CustomFieldState extends State<CustomField> {
                   obscureText: widget.isPassword && !_isPasswordVisible,
                   keyboardType: widget.keyboardType,
                   textInputAction: widget.action,
-                  textCapitalization: TextCapitalization.sentences,
+                  textCapitalization: widget.keyboardType ==
+                              TextInputType.visiblePassword ||
+                          widget.keyboardType == TextInputType.emailAddress ||
+                          widget.isNotCapitalize == true
+                      ? TextCapitalization.none
+                      : TextCapitalization.sentences,
                   initialValue: widget.value,
                   style: const TextStyle(
                     color: AppColors.grey950,
