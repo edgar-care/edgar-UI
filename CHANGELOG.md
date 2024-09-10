@@ -1,3 +1,7 @@
+## 0.2.2
+
+- Fix capitalize for the customField
+
 ## 0.2.1
 
 - Fix modal gray square in the body
