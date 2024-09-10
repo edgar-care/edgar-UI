@@ -69,7 +69,11 @@ class _CustomFieldState extends State<CustomField> {
                   obscureText: widget.isPassword && !_isPasswordVisible,
                   keyboardType: widget.keyboardType,
                   textInputAction: widget.action,
-                  textCapitalization: TextCapitalization.sentences,
+                  textCapitalization:
+                      widget.keyboardType == TextInputType.visiblePassword ||
+                              widget.keyboardType == TextInputType.emailAddress
+                          ? TextCapitalization.none
+                          : TextCapitalization.sentences,
                   initialValue: widget.value,
                   style: const TextStyle(
                     color: AppColors.grey950,
