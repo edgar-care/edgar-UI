@@ -1,3 +1,7 @@
+## 0.2.3
+
+- Add new variant to the buttons
+
 ## 0.2.2
 
 - Fix capitalize for the customField
