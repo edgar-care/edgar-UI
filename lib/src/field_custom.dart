@@ -30,6 +30,9 @@ class CustomField extends StatefulWidget {
   /// Bool to define for the text field if it's not capitalize
   final bool? isNotCapitalize;
 
+  /// Int to define the max lines of the text field
+  final int maxLines;
+
   /// Take in required parameter a Label, a  fonction onchange, action.
   const CustomField({
     super.key,
@@ -41,6 +44,7 @@ class CustomField extends StatefulWidget {
     this.value = '',
     this.isNotCapitalize = false,
     this.maxSize,
+    this.maxLines = 1,
     required this.action,
   });
 
@@ -73,6 +77,7 @@ class _CustomFieldState extends State<CustomField> {
                   obscureText: widget.isPassword && !_isPasswordVisible,
                   keyboardType: widget.keyboardType,
                   textInputAction: widget.action,
+                  maxLines: widget.maxLines,
                   textCapitalization: widget.keyboardType ==
                               TextInputType.visiblePassword ||
                           widget.keyboardType == TextInputType.emailAddress ||
