@@ -1,3 +1,7 @@
+## 0.2.4
+
+- Add a possibilty of modify the max lines of the custom field
+
 ## 0.2.3
 
 - Add new variant to the buttons
