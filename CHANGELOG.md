@@ -1,6 +1,6 @@
 ## 0.2.5
 
-- remove the required in custom modal
+- Remove the required in custom modal
 
 ## 0.2.4
 
