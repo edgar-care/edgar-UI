@@ -88,13 +88,13 @@ class ListModalState extends State<ListModal>
 /// Container of the modal to get is body
 class ModalContainer extends StatelessWidget {
   /// Tittle of the modal
-  final String title;
+  final String? title;
 
   /// Icon de la modal
-  final Widget icon;
+  final Widget? icon;
 
   /// Subtittle of the modal
-  final String subtitle;
+  final String? subtitle;
 
   /// The body of the modal
   final List<Widget>? body;
@@ -105,11 +105,11 @@ class ModalContainer extends StatelessWidget {
   /// Required Tittle, subtittle, and Icon
   const ModalContainer({
     super.key,
-    required this.title,
-    required this.subtitle,
+    this.title,
+    this.subtitle,
     this.body,
     this.footer,
-    required this.icon,
+    this.icon,
   });
 
   @override
@@ -125,48 +125,54 @@ class ModalContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                icon,
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.only(right: 6),
-                    child: Icon(Icons.close),
+            if (icon != null) ...[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  icon!,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.only(right: 6),
+                      child: Icon(Icons.close),
+                    ),
                   ),
+                ],
+              ),
+              const SizedBox(height: 16),
+            ],
+            if (title != null) ...[
+              Text(
+                title!,
+                style: const TextStyle(
+                  height: 1.5,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: "Poppins",
+                  color: Colors.black,
                 ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            Text(
-              title,
-              style: const TextStyle(
-                height: 1.5,
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                fontFamily: "Poppins",
-                color: Colors.black,
+                softWrap: true,
+                overflow: TextOverflow.visible,
               ),
-              softWrap: true,
-              overflow: TextOverflow.visible,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              subtitle,
-              style: const TextStyle(
-                height: 1.5,
-                fontSize: 14,
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.w500,
-                color: AppColors.grey700,
+              const SizedBox(height: 8),
+            ],
+            if (subtitle != null) ...[
+              Text(
+                subtitle!,
+                style: const TextStyle(
+                  height: 1.5,
+                  fontSize: 14,
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.grey700,
+                ),
+                softWrap: true,
               ),
-              softWrap: true,
-            ),
-            if (body != null) ...[
               const SizedBox(height: 24),
+            ],
+            if (body != null) ...[
               SingleChildScrollView(
                 physics:
                     const BouncingScrollPhysics(), // Optional: Add bounce effect
@@ -183,8 +189,10 @@ class ModalContainer extends StatelessWidget {
                 ),
               ),
             ],
-            const SizedBox(height: 24),
-            if (footer != null) footer!,
+            if (footer != null) ...[
+              const SizedBox(height: 24),
+              footer!,
+            ]
           ],
         ),
       ),
