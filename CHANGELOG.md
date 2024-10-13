@@ -1,3 +1,7 @@
+## 0.2.5
+
+- Remove the required in custom modal
+
 ## 0.2.4
 
 - Add a possibilty of modify the max lines of the custom field
