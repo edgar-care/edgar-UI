@@ -70,7 +70,7 @@ class ListModalState extends State<ListModal>
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              for (int i = 0; i < widget.children.length; i++)
+              for (int i = 0; i < widget.children.length; i++)  
                 if (widget.model != null)
                   Visibility(
                     visible: widget.model!.getCurrentPageIndex == i,
@@ -115,7 +115,11 @@ class ModalContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
+      child: Padding(
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom, // Ajoutez cet espace pour le clavier
+      ),
+child: Container(
         constraints: BoxConstraints(
           maxHeight: MediaQuery.of(context).size.height,
         ),
@@ -174,12 +178,14 @@ class ModalContainer extends StatelessWidget {
             ],
             if (body != null) ...[
               SingleChildScrollView(
+                controller: ScrollController(),
                 physics:
                     const BouncingScrollPhysics(), // Optional: Add bounce effect
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
                     maxHeight: MediaQuery.of(context).size.height -
                         264, // Adjust as needed
+                    maxWidth: MediaQuery.of(context).size.width - 64,
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -195,6 +201,7 @@ class ModalContainer extends StatelessWidget {
             ]
           ],
         ),
+      ),
       ),
     );
   }
