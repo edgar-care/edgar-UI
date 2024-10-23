@@ -24,14 +24,14 @@ edgar has a number of features that make it easier to build Flutter applications
 To use the edgar library in your Flutter application, add the following dependency to your `pubspec.yaml` file with Flutter:
 
 ```bash
- $ flutter pub add edgar
+ flutter pub add edgar
 ```
 
 This will add a line like this to your package's pubspec.yaml (and run an implicit flutter pub get):
 
 ```yaml
 dependencies:
-  edgar: ^0.3.0
+  edgar: ^0.3.1
 ```
 
 Alternatively, your editor might support `flutter pub get`. Check the docs for your editor to learn more.
