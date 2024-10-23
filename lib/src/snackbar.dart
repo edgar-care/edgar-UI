@@ -185,7 +185,7 @@ class TopSuccessSnackBar extends StatelessWidget {
                             return Transform.scale(
                               scale: value.clamp(0.0, 1.0),
                               child: SvgPicture.asset(
-                                'assets/images/validateSnackBar.svg',
+                                'lib/assets/images/validateSnackBar.svg',
                                 width: 16,
                               ),
                             );
@@ -306,7 +306,7 @@ class TopErrorSnackBar extends StatelessWidget {
                             return Transform.scale(
                               scale: value.clamp(0.0, 1.0),
                               child: SvgPicture.asset(
-                                'assets/images/attentionSnackBar.svg',
+                                'lib/assets/images/attentionSnackBar.svg',
                                 width: 16,
                               ),
                             );
@@ -432,7 +432,7 @@ class TopInfoSnackBar extends StatelessWidget {
                             return Transform.scale(
                               scale: value.clamp(0.0, 1.0),
                               child: SvgPicture.asset(
-                                'assets/images/InfoSnackBar.svg',
+                                'lib/assets/images/InfoSnackBar.svg',
                                 width: 16,
                               ),
                             );
