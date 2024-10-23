@@ -1,4 +1,4 @@
-## 0.2.6
+## 0.3.0
 
 - Fix the probleme with the modal when you click on a textfield
 - Fix the label on the datePicker
