@@ -5,96 +5,186 @@ import 'package:bootstrap_icons/bootstrap_icons.dart';
 /// A custom date Picker
 // ignore: must_be_immutable
 class CustomDatePiker extends StatefulWidget {
-  /// The star date of the datePciker
-  final DateTime? startDate;
-
-  /// The endDate
-  final DateTime? endDate;
-
-  /// The value of the date picker
-  String? value;
-
-  /// The placeHolder if there is no value
-  final String? placeHolder;
-
-  /// Function on change
-  final Function(String)? onChanged;
-
-  // ignore: public_member_api_docs
-  CustomDatePiker({
+  /// Data Picker constructor
+  const CustomDatePiker({
     super.key,
     this.startDate,
     this.endDate,
-    this.value,
-    this.placeHolder,
+    this.initialValue,
+    this.placeholder,
     this.onChanged,
+    this.label,
+    this.isRequired = false,
+    this.errorText,
   });
 
+  /// The start date of the date picker
+  final DateTime? startDate;
+
+  /// The end date
+  final DateTime? endDate;
+
+  /// The initial value of the date picker
+  final String? initialValue;
+
+  /// The placeholder if there is no value
+  final String? placeholder;
+
+  /// The label text above the date picker
+  final String? label;
+
+  /// Whether the field is required
+  final bool isRequired;
+
+  /// Error text to display below the date picker
+  final String? errorText;
+
+  /// Callback function when date changes
+  final ValueChanged<String>? onChanged;
+
   @override
-  State<CustomDatePiker> createState() => _CustomDatePikerState();
+  State<CustomDatePiker> createState() => _CustomDatePickerState();
 }
 
-class _CustomDatePikerState extends State<CustomDatePiker> {
+class _CustomDatePickerState extends State<CustomDatePiker> {
+  String? _value;
+
+  @override
+  void initState() {
+    super.initState();
+    _value = widget.initialValue;
+  }
+
+  @override
+  void didUpdateWidget(CustomDatePiker oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.initialValue != oldWidget.initialValue) {
+      _value = widget.initialValue;
+    }
+  }
+
+  DateTime _parseDate(String date) {
+    final parts = date.split('/');
+    return DateTime(
+      int.parse(parts[2]), // year
+      int.parse(parts[1]), // month
+      int.parse(parts[0]), // day
+    );
+  }
+
+  String _formatDate(DateTime date) {
+    return '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year.toString()}';
+  }
+
+  Future<void> _showDatePicker() async {
+    final DateTime initialDate =
+        _value != null ? _parseDate(_value!) : DateTime.now();
+
+    final DateTime? selectedDate = await showDatePicker(
+      context: context,
+      initialDate: initialDate,
+      firstDate: widget.startDate ?? DateTime(1900),
+      lastDate: widget.endDate ?? DateTime(2100),
+      locale: const Locale('fr', 'FR'),
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: AppColors.blue500,
+              onPrimary: Colors.white,
+              surface: Colors.white,
+              onSurface: AppColors.black,
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (selectedDate != null) {
+      final formattedDate = _formatDate(selectedDate);
+      setState(() => _value = formattedDate);
+      widget.onChanged?.call(formattedDate);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.blue500, width: 2),
-      ),
-      child: InkWell(
-        onTap: () {
-          showDatePicker(
-            context: context,
-            initialDate: widget.value != null
-                ? DateTime(
-                    int.parse(widget.value!.split('/')[2]), // year
-                    int.parse(widget.value!.split('/')[1]), // month
-                    int.parse(widget.value!.split('/')[0]), // day
-                  )
-                : DateTime.now(),
-            firstDate:
-                widget.startDate != null ? widget.startDate! : DateTime(1900),
-            lastDate: widget.endDate != null ? widget.endDate! : DateTime(2100),
-            locale: const Locale('fr', 'FR'),
-          ).then(
-            (value) {
-              if (value != null) {
-                setState(() {
-                  widget.value =
-                      '${value.day.toString().padLeft(2, '0')}/${value.month.toString().padLeft(2, '0')}/${value.year.toString()}';
-                });
-                widget.onChanged?.call(
-                    '${value.day.toString().padLeft(2, '0')}/${value.month.toString().padLeft(2, '0')}/${value.year.toString()}');
-              }
-            },
-          );
-        },
-        child: Row(
-          children: [
-            if (widget.placeHolder != null) ...[
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (widget.label != null) ...[
+          Row(
+            children: [
               Text(
-                widget.value ?? widget.placeHolder!,
-                style: TextStyle(
-                  color: widget.value != null
-                      ? AppColors.black
-                      : AppColors.grey400,
-                  fontSize: 16,
-                  fontFamily: 'Poppins',
+                widget.label!,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.black,
                 ),
-                overflow: TextOverflow.ellipsis,
               ),
+              if (widget.isRequired)
+                const Text(
+                  ' *',
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 14,
+                  ),
+                ),
             ],
-            const Spacer(),
-            const Icon(
-              BootstrapIcons.calendar3,
-              color: AppColors.grey400,
-              size: 16,
+          ),
+          const SizedBox(height: 8),
+        ],
+        InkWell(
+          onTap: _showDatePicker,
+          borderRadius: BorderRadius.circular(12),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color:
+                    widget.errorText != null ? Colors.red : AppColors.blue500,
+                width: 2,
+              ),
             ),
-          ],
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    _value ?? widget.placeholder ?? '',
+                    style: TextStyle(
+                      color:
+                          _value != null ? AppColors.black : AppColors.grey400,
+                      fontSize: 14,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                const Icon(
+                  BootstrapIcons.calendar3,
+                  color: AppColors.grey400,
+                  size: 16,
+                ),
+              ],
+            ),
+          ),
         ),
-      ),
+        if (widget.errorText != null) ...[
+          const SizedBox(height: 4),
+          Text(
+            widget.errorText!,
+            style: const TextStyle(
+              color: Colors.red,
+              fontSize: 12,
+            ),
+          ),
+        ],
+      ],
     );
   }
 }

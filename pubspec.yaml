@@ -1,6 +1,6 @@
 name: edgar
 description: "Flutter plugin providing library components used in the edgar apps"
-version: 0.2.5
+version: 0.3.0
 homepage: "https://edgar-sante.fr"
 repository: "https://github.com/edgar-care/edgar-UI"
 
@@ -25,3 +25,8 @@ dev_dependencies:
   flutter_lints: ^4.0.0
 
 flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/images/
+
