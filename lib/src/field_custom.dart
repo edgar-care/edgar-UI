@@ -2,6 +2,7 @@ import 'package:edgar/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:easy_autocomplete/easy_autocomplete.dart';
+import 'package:flutter/services.dart';
 
 /// A Field who follow the color of the application
 class CustomField extends StatefulWidget {
@@ -9,18 +10,20 @@ class CustomField extends StatefulWidget {
   final String label;
 
   /// Icon at the end of the text field
-  final IconData? icon; // Changed from IconData to IconData?
+  final IconData? icon;
+
   /// Bool define if it a password or no to put a visibility of the text
   final bool isPassword;
 
   /// It's the text Keyboard type
   final TextInputType keyboardType;
 
-  /// Fuction onchange to define what will append on change
+  /// Function onchange to define what will append on change
   final Function(String) onChanged;
 
   /// String to define a default value
-  final String value; // Added onChanged parameter
+  final String value;
+
   /// Int to define a max width of the widget
   final int? maxSize;
 
@@ -33,7 +36,10 @@ class CustomField extends StatefulWidget {
   /// Int to define the max lines of the text field
   final int maxLines;
 
-  /// Take in required parameter a Label, a  fonction onchange, action.
+  /// Maximum length of the input
+  final int? maxLength;
+
+  /// Take in required parameter a Label, a fonction onchange, action.
   const CustomField({
     super.key,
     required this.label,
@@ -45,6 +51,7 @@ class CustomField extends StatefulWidget {
     this.isNotCapitalize = false,
     this.maxSize,
     this.maxLines = 1,
+    this.maxLength, // Nouveau paramètre
     required this.action,
   });
 
@@ -56,7 +63,7 @@ class CustomField extends StatefulWidget {
 class _CustomFieldState extends State<CustomField> {
   bool _isPasswordVisible = false;
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -78,6 +85,13 @@ class _CustomFieldState extends State<CustomField> {
                   keyboardType: widget.keyboardType,
                   textInputAction: widget.action,
                   maxLines: widget.maxLines,
+                  maxLength: widget.maxLength, // Limite de caractères
+                  inputFormatters: [
+                    // Filtres de saisie supplémentaires
+                    LengthLimitingTextInputFormatter(widget.maxLength ?? 255),
+                    // Vous pouvez ajouter d'autres filtres si nécessaire
+                    // Exemple : FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]'))
+                  ],
                   textCapitalization: widget.keyboardType ==
                               TextInputType.visiblePassword ||
                           widget.keyboardType == TextInputType.emailAddress ||
@@ -97,7 +111,8 @@ class _CustomFieldState extends State<CustomField> {
                     border: InputBorder.none,
                     isDense: true,
                     hintText: widget.label,
-                    
+                    counterText:
+                        '', // Masque le compteur de caractères par défaut
                     hintStyle: const TextStyle(
                       color: AppColors.grey400,
                       fontFamily: 'Poppins',
@@ -106,6 +121,15 @@ class _CustomFieldState extends State<CustomField> {
                       textBaseline: TextBaseline.ideographic,
                     ),
                   ),
+                  validator: (value) {
+                    // Validation optionnelle de la longueur
+                    if (widget.maxLength != null &&
+                        value != null &&
+                        value.length > widget.maxLength!) {
+                      return 'Dépassement de la longueur maximale';
+                    }
+                    return null;
+                  },
                   onChanged: widget.onChanged,
                   autocorrect: true,
                 ),
