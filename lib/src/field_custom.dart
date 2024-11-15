@@ -97,6 +97,7 @@ class _CustomFieldState extends State<CustomField> {
                     border: InputBorder.none,
                     isDense: true,
                     hintText: widget.label,
+                    
                     hintStyle: const TextStyle(
                       color: AppColors.grey400,
                       fontFamily: 'Poppins',
@@ -106,6 +107,7 @@ class _CustomFieldState extends State<CustomField> {
                     ),
                   ),
                   onChanged: widget.onChanged,
+                  autocorrect: true,
                 ),
               ),
               if (widget.icon != null)

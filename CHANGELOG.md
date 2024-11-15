@@ -1,3 +1,13 @@
+## 0.3.1
+
+- Fix the access to the asset for the modal
+
+## 0.3.0
+
+- Fix the probleme with the modal when you click on a textfield
+- Fix the label on the datePicker
+- Add a new top snackbar to feat with the new ui
+
 ## 0.2.5
 
 - Remove the required in custom modal
