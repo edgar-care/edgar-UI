@@ -1,7 +1,6 @@
 import 'package:edgar/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:bootstrap_icons/bootstrap_icons.dart';
-import 'package:flutter_svg/svg.dart';
 
 /// Snackbar when it a sucess case
 class SuccessSnackBar extends SnackBar {
@@ -160,7 +159,7 @@ class TopSuccessSnackBar extends StatelessWidget {
                 child: Opacity(
                   opacity: value.clamp(0.0, 1.0),
                   child: Container(
-                    constraints: const BoxConstraints(minHeight: 32),
+                    constraints: const BoxConstraints(minHeight: 42),
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                     decoration: BoxDecoration(
@@ -177,21 +176,22 @@ class TopSuccessSnackBar extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        TweenAnimationBuilder<double>(
-                          tween: Tween(begin: 0.0, end: 1.0),
-                          duration: const Duration(milliseconds: 700),
-                          curve: Curves.elasticOut,
-                          builder: (context, value, child) {
-                            return Transform.scale(
-                              scale: value.clamp(0.0, 1.0),
-                              child: SvgPicture.asset(
-                                'lib/assets/images/validateSnackBar.svg',
-                                width: 16,
-                              ),
-                            );
-                          },
-                        ),
-                        const SizedBox(width: 12),
+                        // TweenAnimationBuilder<double>(
+                        //   tween: Tween(begin: 0.0, end: 1.0),
+                        //   duration: const Duration(milliseconds: 700),
+                        //   curve: Curves.elasticOut,
+                        //   builder: (context, value, child) {
+                        //     return Transform.scale(
+                        //       scale: value.clamp(0.0, 1.0),
+                        //       child: SvgPicture.asset(
+                        //         'assets/images/validateSnackBar.svg',
+                        //         width: 16,
+                        //         package: 'edgar-UI',
+                        //       ),
+                        //     );
+                        //   },
+                        // ),
+                        // const SizedBox(width: 12),
                         Expanded(
                           child: TweenAnimationBuilder<double>(
                             tween: Tween(begin: 0.0, end: 1.0),
@@ -281,7 +281,7 @@ class TopErrorSnackBar extends StatelessWidget {
                 child: Opacity(
                   opacity: value.clamp(0.0, 1.0),
                   child: Container(
-                    constraints: const BoxConstraints(minHeight: 32),
+                    constraints: const BoxConstraints(minHeight: 42),
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                     decoration: BoxDecoration(
@@ -298,21 +298,22 @@ class TopErrorSnackBar extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        TweenAnimationBuilder<double>(
-                          tween: Tween(begin: 0.0, end: 1.0),
-                          duration: const Duration(milliseconds: 700),
-                          curve: Curves.elasticOut,
-                          builder: (context, value, child) {
-                            return Transform.scale(
-                              scale: value.clamp(0.0, 1.0),
-                              child: SvgPicture.asset(
-                                'lib/assets/images/attentionSnackBar.svg',
-                                width: 16,
-                              ),
-                            );
-                          },
-                        ),
-                        const SizedBox(width: 12),
+                        // TweenAnimationBuilder<double>(
+                        //   tween: Tween(begin: 0.0, end: 1.0),
+                        //   duration: const Duration(milliseconds: 700),
+                        //   curve: Curves.elasticOut,
+                        //   builder: (context, value, child) {
+                        //     return Transform.scale(
+                        //       scale: value.clamp(0.0, 1.0),
+                        //       child: SvgPicture.asset(
+                        //         'assets/images/attentionSnackBar.svg',
+                        //         width: 16,
+                        //         package: 'edgar-UI',
+                        //       ),
+                        //     );
+                        //   },
+                        // ),
+                        // const SizedBox(width: 12),
                         Expanded(
                           child: TweenAnimationBuilder<double>(
                             tween: Tween(begin: 0.0, end: 1.0),
@@ -406,7 +407,7 @@ class TopInfoSnackBar extends StatelessWidget {
                 child: Opacity(
                   opacity: value.clamp(0.0, 1.0),
                   child: Container(
-                    constraints: const BoxConstraints(minHeight: 32),
+                    constraints: const BoxConstraints(minHeight: 48),
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                     decoration: BoxDecoration(
@@ -424,21 +425,22 @@ class TopInfoSnackBar extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TweenAnimationBuilder<double>(
-                          tween: Tween(begin: 0.0, end: 1.0),
-                          duration: const Duration(milliseconds: 700),
-                          curve: Curves.elasticOut,
-                          builder: (context, value, child) {
-                            return Transform.scale(
-                              scale: value.clamp(0.0, 1.0),
-                              child: SvgPicture.asset(
-                                'lib/assets/images/InfoSnackBar.svg',
-                                width: 16,
-                              ),
-                            );
-                          },
-                        ),
-                        const SizedBox(width: 12),
+                        // TweenAnimationBuilder<double>(
+                        //   tween: Tween(begin: 0.0, end: 1.0),
+                        //   duration: const Duration(milliseconds: 700),
+                        //   curve: Curves.elasticOut,
+                        //   builder: (context, value, child) {
+                        //     return Transform.scale(
+                        //       scale: value.clamp(0.0, 1.0),
+                        //       child: SvgPicture.asset(
+                        //         'assets/images/InfoSnackBar.svg',
+                        //         width: 16,
+                        //         package: 'edgar-UI',
+                        //       ),
+                        //     );
+                        //   },
+                        // ),
+                        // const SizedBox(width: 12),
                         Expanded(
                           child: TweenAnimationBuilder<double>(
                             tween: Tween(begin: 0.0, end: 1.0),
