@@ -1,3 +1,7 @@
+## 0.3.2
+
+- Delete icon on snackbar
+
 ## 0.3.1
 
 - Fix the access to the asset for the modal
